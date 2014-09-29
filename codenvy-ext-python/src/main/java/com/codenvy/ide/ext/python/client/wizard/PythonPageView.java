@@ -16,11 +16,6 @@ import com.google.inject.ImplementedBy;
 /** @author Vladyslav Zhukovskii */
 @ImplementedBy(PythonPageViewImpl.class)
 public interface PythonPageView extends View<PythonPageView.ActionDelegate> {
-    String getProjectType();
-
-    void reset();
-
     public interface ActionDelegate {
-        void setProjectType(String projectType);
     }
 }

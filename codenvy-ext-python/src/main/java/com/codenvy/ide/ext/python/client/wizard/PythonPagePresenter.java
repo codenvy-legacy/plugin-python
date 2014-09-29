@@ -11,12 +11,10 @@
 package com.codenvy.ide.ext.python.client.wizard;
 
 import com.codenvy.api.project.gwt.client.ProjectServiceClient;
-import com.codenvy.api.project.shared.dto.GenerateDescriptor;
 import com.codenvy.api.project.shared.dto.ProjectDescriptor;
 import com.codenvy.ide.api.event.OpenProjectEvent;
 import com.codenvy.ide.api.projecttype.wizard.ProjectWizard;
 import com.codenvy.ide.api.wizard.AbstractWizardPage;
-import com.codenvy.ide.api.wizard.WizardContext;
 import com.codenvy.ide.dto.DtoFactory;
 import com.codenvy.ide.ext.python.shared.ProjectAttributes;
 import com.codenvy.ide.rest.AsyncRequestCallback;
@@ -40,8 +38,6 @@ public class PythonPagePresenter extends AbstractWizardPage implements PythonPag
     private EventBus               eventBus;
     private DtoFactory             dtoFactory;
     private DtoUnmarshallerFactory dtoUnmarshallerFactory;
-
-    private WizardContext.Key<String> PROJECT_TYPE = new WizardContext.Key<>("projectType");
 
     @Inject
     public PythonPagePresenter(PythonPageView view, ProjectServiceClient projectServiceClient, EventBus eventBus, DtoFactory dtoFactory,
@@ -83,14 +79,13 @@ public class PythonPagePresenter extends AbstractWizardPage implements PythonPag
     /** {@inheritDoc} */
     @Override
     public boolean canSkip() {
-        return false;
+        return true;
     }
 
     /** {@inheritDoc} */
     @Override
     public void go(AcceptsOneWidget container) {
         container.setWidget(view);
-        view.reset();
 
         ProjectDescriptor project = wizardContext.getData(ProjectWizard.PROJECT);
         if (project != null) {
@@ -103,12 +98,6 @@ public class PythonPagePresenter extends AbstractWizardPage implements PythonPag
         }
     }
 
-
-    @Override
-    public void setProjectType(String projectType) {
-        wizardContext.putData(PROJECT_TYPE, projectType);
-    }
-
     /** {@inheritDoc} */
     @Override
     public void commit(@NotNull final CommitCallback callback) {
@@ -117,6 +106,9 @@ public class PythonPagePresenter extends AbstractWizardPage implements PythonPag
 
         projectDescriptorToUpdate.setVisibility(getProjectVisibility());
         final String name = wizardContext.getData(ProjectWizard.PROJECT_NAME);
+        projectDescriptorToUpdate.setDescription(wizardContext.getData(ProjectWizard.PROJECT_DESCRIPTION));
+        projectDescriptorToUpdate.setRunner(ProjectAttributes.PYTHON_DEFAULT_RUNNER);
+        projectDescriptorToUpdate.setDefaultRunnerEnvironment(ProjectAttributes.PYTHON_DEFAULT_RUNNER_ENVID);
         final ProjectDescriptor project = wizardContext.getData(ProjectWizard.PROJECT);
         if (project != null) {
             if (project.getName().equals(name)) {
@@ -137,7 +129,7 @@ public class PythonPagePresenter extends AbstractWizardPage implements PythonPag
                 });
             }
         } else {
-            generateProject(name, getProjectVisibility(), callback);
+            createProject(callback, projectDescriptorToUpdate, name);
         }
     }
 
@@ -169,38 +161,24 @@ public class PythonPagePresenter extends AbstractWizardPage implements PythonPag
                 });
     }
 
-    private void generateProject(final String name, String visibility, final CommitCallback callback) {
-        GenerateDescriptor generateDescriptor = dtoFactory.createDto(GenerateDescriptor.class);
+    private void createProject(final CommitCallback callback, ProjectDescriptor projectDescriptor, final String name) {
+        projectServiceClient
+                .createProject(name, projectDescriptor,
+                               new AsyncRequestCallback<ProjectDescriptor>(
+                                       dtoUnmarshallerFactory.newUnmarshaller(ProjectDescriptor.class)) {
+                                   @Override
+                                   protected void onSuccess(ProjectDescriptor result) {
+                                       eventBus.fireEvent(new OpenProjectEvent(result.getName()));
+                                       wizardContext.putData(ProjectWizard.PROJECT, result);
+                                       callback.onSuccess();
+                                   }
 
-        String projectType = wizardContext.getData(PROJECT_TYPE);
-
-        switch (projectType) {
-            case "web":
-                generateDescriptor.setGeneratorName(ProjectAttributes.PYTHON_WEB_DEF_GENERATOR);
-                break;
-            default:
-                generateDescriptor.setGeneratorName(ProjectAttributes.PYTHON_STANDALONE_DEF_GENERATOR);
-                break;
-        }
-
-        generateDescriptor.setProjectVisibility(visibility);
-
-        projectServiceClient.generateProject(name, generateDescriptor,
-                                             new AsyncRequestCallback<ProjectDescriptor>(
-                                                     dtoUnmarshallerFactory.newUnmarshaller(ProjectDescriptor.class)) {
-                                                 @Override
-                                                 protected void onSuccess(ProjectDescriptor result) {
-                                                     eventBus.fireEvent(new OpenProjectEvent(result.getName()));
-                                                     wizardContext.putData(ProjectWizard.PROJECT, result);
-                                                     callback.onSuccess();
-                                                 }
-
-                                                 @Override
-                                                 protected void onFailure(Throwable exception) {
-                                                     callback.onFailure(exception);
-                                                 }
-                                             }
-                                            );
+                                   @Override
+                                   protected void onFailure(Throwable exception) {
+                                       callback.onFailure(exception);
+                                   }
+                               }
+                              );
     }
 
 }

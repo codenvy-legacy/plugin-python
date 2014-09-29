@@ -10,24 +10,18 @@
  *******************************************************************************/
 package com.codenvy.ide.ext.python.server.inject;
 
-import com.codenvy.api.project.server.ProjectGenerator;
-import com.codenvy.ide.ext.python.server.project.generator.DesktopProjectGenerator;
-import com.codenvy.ide.ext.python.server.project.generator.WebProjectGenerator;
 import com.codenvy.ide.ext.python.server.project.type.PythonProjectTypeDescriptionExtension;
 import com.codenvy.ide.ext.python.server.project.type.PythonProjectTypeExtension;
 import com.codenvy.inject.DynaModule;
 import com.google.inject.AbstractModule;
-import com.google.inject.multibindings.Multibinder;
 
+/** @author Vladyslav Zhukovskii */
 @DynaModule
 public class PythonModule extends AbstractModule {
+    /** {@inheritDoc} */
     @Override
     protected void configure() {
         bind(PythonProjectTypeExtension.class);
         bind(PythonProjectTypeDescriptionExtension.class);
-
-        Multibinder<ProjectGenerator> multiBinder = Multibinder.newSetBinder(binder(), ProjectGenerator.class);
-        multiBinder.addBinding().to(DesktopProjectGenerator.class);
-        multiBinder.addBinding().to(WebProjectGenerator.class);
     }
 }
