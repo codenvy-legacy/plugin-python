@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.codenvy.ide.ext.python.server.project.type;
 
+import com.codenvy.api.project.server.ProjectTemplateDescriptionLoader;
 import com.codenvy.api.project.server.ProjectTypeDescriptionRegistry;
 import com.codenvy.api.project.server.ProjectTypeExtension;
 import com.codenvy.api.project.shared.Attribute;
@@ -17,7 +18,6 @@ import com.codenvy.api.project.shared.ProjectTemplateDescription;
 import com.codenvy.api.project.shared.ProjectType;
 import com.codenvy.ide.Constants;
 import com.codenvy.ide.ext.python.shared.ProjectAttributes;
-import com.codenvy.ide.server.ProjectTemplateDescriptionLoader;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -40,8 +40,9 @@ public class PythonProjectTypeExtension implements ProjectTypeExtension {
     public PythonProjectTypeExtension(ProjectTypeDescriptionRegistry registry,
                                       ProjectTemplateDescriptionLoader projectTemplateDescriptionLoader) {
         this.projectTemplateDescriptionLoader = projectTemplateDescriptionLoader;
-        this.projectType = new ProjectType(ProjectAttributes.PYTHON_ID, ProjectAttributes.PYTHON_NAME, ProjectAttributes.PYTHON_CATEGORY, null,
-                                           ProjectAttributes.PYTHON_DEFAULT_RUNNER);
+        this.projectType =
+                new ProjectType(ProjectAttributes.PYTHON_ID, ProjectAttributes.PYTHON_NAME, ProjectAttributes.PYTHON_CATEGORY, null,
+                                ProjectAttributes.PYTHON_DEFAULT_RUNNER);
         registry.registerProjectType(this);
     }
 
