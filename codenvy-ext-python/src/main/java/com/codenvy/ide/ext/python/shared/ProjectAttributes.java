@@ -15,8 +15,4 @@ public interface ProjectAttributes {
     String PYTHON_ID             = "python";
     String PYTHON_NAME           = "Python Project";
     String PYTHON_CATEGORY       = "Python";
-
-    String PYTHON_DEFAULT_RUNNER = "python-webapp-default";
-    String PYTHON_DEFAULT_RUNNER_ENVID = "python27";
-
 }

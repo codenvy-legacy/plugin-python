@@ -41,8 +41,7 @@ public class PythonProjectTypeExtension implements ProjectTypeExtension {
                                       ProjectTemplateDescriptionLoader projectTemplateDescriptionLoader) {
         this.projectTemplateDescriptionLoader = projectTemplateDescriptionLoader;
         this.projectType =
-                new ProjectType(ProjectAttributes.PYTHON_ID, ProjectAttributes.PYTHON_NAME, ProjectAttributes.PYTHON_CATEGORY, null,
-                                ProjectAttributes.PYTHON_DEFAULT_RUNNER);
+                new ProjectType(ProjectAttributes.PYTHON_ID, ProjectAttributes.PYTHON_NAME, ProjectAttributes.PYTHON_CATEGORY);
         registry.registerProjectType(this);
     }
 

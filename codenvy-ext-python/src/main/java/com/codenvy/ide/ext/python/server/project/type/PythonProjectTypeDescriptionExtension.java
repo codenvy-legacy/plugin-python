@@ -35,8 +35,7 @@ public class PythonProjectTypeDescriptionExtension implements ProjectTypeDescrip
     @Override
     public List<ProjectType> getProjectTypes() {
         final List<ProjectType> list = new ArrayList<>(1);
-        list.add(new ProjectType(ProjectAttributes.PYTHON_ID, ProjectAttributes.PYTHON_NAME, ProjectAttributes.PYTHON_CATEGORY, null,
-                                 ProjectAttributes.PYTHON_DEFAULT_RUNNER));
+        list.add(new ProjectType(ProjectAttributes.PYTHON_ID, ProjectAttributes.PYTHON_NAME, ProjectAttributes.PYTHON_CATEGORY));
         return list;
     }
 
