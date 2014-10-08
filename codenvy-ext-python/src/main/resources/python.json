@@ -8,7 +8,7 @@
             "location": "https://github.com/codenvy-templates/desktop-basic-python27-simple.git",
             "parameters": {
                 "branch": "3.1.0",
-                "cleanVcs": "true"
+                "keepVcs": "false"
             }
         },
         "defaultRunnerEnvironment": "python27",
@@ -28,7 +28,7 @@
             "location": "https://github.com/codenvy-templates/desktop-basic-python34-simple.git",
             "parameters": {
                 "branch": "3.1.0",
-                "cleanVcs": "true"
+                "keepVcs": "false"
             }
         },
         "defaultRunnerEnvironment": "python34",
@@ -48,7 +48,7 @@
             "location": "https://github.com/codenvy-templates/web-basic-python27-simple.git",
             "parameters": {
                 "branch": "3.1.0",
-                "cleanVcs": "true"
+                "keepVcs": "false"
             }
         },
         "defaultRunnerEnvironment": "python27",
@@ -68,7 +68,7 @@
             "location": "https://github.com/codenvy-templates/web-gaesdk.flask-python27-simple.git",
             "parameters": {
                 "branch": "3.1.0",
-                "cleanVcs": "true"
+                "keepVcs": "false"
             }
         },
         "defaultRunnerEnvironment": "python27_gae199",
@@ -88,7 +88,7 @@
             "location": "https://github.com/codenvy-templates/web-gaesdk.bottle-python27-simple.git",
             "parameters": {
                 "branch": "3.1.0",
-                "cleanVcs": "true"
+                "keepVcs": "false"
             }
         },
         "defaultRunnerEnvironment": "python27_gae199",
