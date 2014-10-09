@@ -10,12 +10,14 @@
  *******************************************************************************/
 package com.codenvy.ide.ext.python.server.project.type;
 
+import com.codenvy.api.project.server.Builders;
 import com.codenvy.api.project.server.ProjectTemplateDescriptionLoader;
 import com.codenvy.api.project.server.ProjectTypeDescriptionRegistry;
 import com.codenvy.api.project.server.ProjectTypeExtension;
-import com.codenvy.api.project.shared.Attribute;
-import com.codenvy.api.project.shared.ProjectTemplateDescription;
-import com.codenvy.api.project.shared.ProjectType;
+import com.codenvy.api.project.server.Attribute;
+import com.codenvy.api.project.server.ProjectTemplateDescription;
+import com.codenvy.api.project.server.ProjectType;
+import com.codenvy.api.project.server.Runners;
 import com.codenvy.api.project.shared.Constants;
 import com.codenvy.ide.ext.python.shared.ProjectAttributes;
 import com.google.inject.Inject;
@@ -57,6 +59,16 @@ public class PythonProjectTypeExtension implements ProjectTypeExtension {
         final List<Attribute> list = new ArrayList<>(1);
         list.add(new Attribute(Constants.LANGUAGE, ProjectAttributes.PYTHON_ID));
         return list;
+    }
+
+    @Override
+    public Builders getBuilders() {
+        return null;
+    }
+
+    @Override
+    public Runners getRunners() {
+        return null;
     }
 
     /** {@inheritDoc} */
