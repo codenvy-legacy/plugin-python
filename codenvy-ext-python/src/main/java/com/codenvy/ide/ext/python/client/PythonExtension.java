@@ -45,6 +45,6 @@ public class PythonExtension {
 
         projectTypeWizardRegistry.addWizard(ProjectAttributes.PYTHON_ID, wizard);
 
-        iconRegistry.registerIcon(new Icon("python.samples.category.icon", parserResource.pythonCategoryIcon()));
+        iconRegistry.registerIcon(new Icon("Python.samples.category.icon", parserResource.pythonCategoryIcon()));
     }
 }
