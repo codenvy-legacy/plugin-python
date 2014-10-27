@@ -11,13 +11,14 @@
                 "keepVcs": "false"
             }
         },
-        "defaultRunnerEnvironment": "python27",
-        "runnerEnvironmentConfigurations": {
-            "default": {
-                "recommendedMemorySize": 256
+        "runners": {
+            "default": "system:/python/web/python27",
+            "configs": {
+                "recommend": {
+                    "ram": 256
+                }
             }
-        },
-        "runnerName": "python-webapp-default"
+        }
     },
     {
         "displayName": "Python 3.4",
@@ -31,13 +32,14 @@
                 "keepVcs": "false"
             }
         },
-        "defaultRunnerEnvironment": "python34",
-        "runnerEnvironmentConfigurations": {
-            "default": {
-                "recommendedMemorySize": 256
+        "runners": {
+            "default": "system:/python/web/python34",
+            "configs": {
+                "recommend": {
+                    "ram": 256
+                }
             }
-        },
-        "runnerName": "python-webapp-default"
+        }
     },
     {
         "displayName": "Python 2.7 Web",
@@ -51,13 +53,14 @@
                 "keepVcs": "false"
             }
         },
-        "defaultRunnerEnvironment": "python27",
-        "runnerEnvironmentConfigurations": {
-            "default": {
-                "recommendedMemorySize": 256
+        "runners": {
+            "default": "system:/python/web/python27_gae199",
+            "configs": {
+                "recommend": {
+                    "ram": 256
+                }
             }
-        },
-        "runnerName": "python-webapp-default"
+        }
     },
     {
         "displayName": "Python 2.7 GAE Flask",
@@ -71,13 +74,14 @@
                 "keepVcs": "false"
             }
         },
-        "defaultRunnerEnvironment": "python27_gae199",
-        "runnerEnvironmentConfigurations": {
-            "default": {
-                "recommendedMemorySize": 256
+        "runners": {
+            "default": "system:/python/web/python27_gae199",
+            "configs": {
+                "recommend": {
+                    "ram": 256
+                }
             }
-        },
-        "runnerName": "python-webapp-default"
+        }
     },
     {
         "displayName": "Python 2.7 GAE Bottle",
@@ -91,12 +95,13 @@
                 "keepVcs": "false"
             }
         },
-        "defaultRunnerEnvironment": "python27_gae199",
-        "runnerEnvironmentConfigurations": {
-            "default": {
-                "recommendedMemorySize": 256
+        "runners": {
+            "default": "system:/python/web/python27_gae199",
+            "configs": {
+                "recommend": {
+                    "ram": 256
+                }
             }
-        },
-        "runnerName": "python-webapp-default"
+        }
     }
 ]
