@@ -42,7 +42,7 @@ public class PythonProjectTypeDescriptionExtension implements ProjectTypeDescrip
     /** {@inheritDoc} */
     @Override
     public List<AttributeDescription> getAttributeDescriptions() {
-        final List<AttributeDescription> list = new ArrayList<>(4);
+        final List<AttributeDescription> list = new ArrayList<>(1);
         list.add(new AttributeDescription(Constants.LANGUAGE));
         return list;
     }
