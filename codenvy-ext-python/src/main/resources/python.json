@@ -61,47 +61,5 @@
                 }
             }
         }
-    },
-    {
-        "displayName": "Python 2.7 GAE Flask",
-        "category": "Samples - Hello World",
-        "description": "A simple web python 2.7 application using Google App Engine.",
-        "source": {
-            "type": "git",
-            "location": "https://github.com/codenvy-templates/web-gaesdk.flask-python27-simple.git",
-            "parameters": {
-                "branch": "3.1.0",
-                "keepVcs": "false"
-            }
-        },
-        "runners": {
-            "default": "system:/python/web/python27_gae199",
-            "configs": {
-                "recommend": {
-                    "ram": 256
-                }
-            }
-        }
-    },
-    {
-        "displayName": "Python 2.7 GAE Bottle",
-        "category": "Samples - Hello World",
-        "description": "A simple web python 2.7 application using Google App Engine.",
-        "source": {
-            "type": "git",
-            "location": "https://github.com/codenvy-templates/web-gaesdk.bottle-python27-simple.git",
-            "parameters": {
-                "branch": "3.1.0",
-                "keepVcs": "false"
-            }
-        },
-        "runners": {
-            "default": "system:/python/web/python27_gae199",
-            "configs": {
-                "recommend": {
-                    "ram": 256
-                }
-            }
-        }
     }
 ]
