@@ -54,7 +54,7 @@
             }
         },
         "runners": {
-            "default": "system:/python/web/python27_gae1914_ext_libs",
+            "default": "system:/python/web/python27",
             "configs": {
                 "recommend": {
                     "ram": 256
