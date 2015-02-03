@@ -22,7 +22,7 @@ import com.google.inject.Provider;
 import javax.annotation.Nonnull;
 
 /**
- * Provides information for registering Maven project type into project wizard.
+ * Provides information for registering Python project type into project wizard.
  *
  * @author Artem Zatsarynnyy
  */
