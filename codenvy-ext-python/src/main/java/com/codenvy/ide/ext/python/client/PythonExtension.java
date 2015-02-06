@@ -18,7 +18,7 @@ import com.codenvy.ide.api.projecttype.wizard.ProjectTypeWizardRegistry;
 import com.codenvy.ide.api.projecttype.wizard.ProjectWizard;
 import com.codenvy.ide.ext.python.client.wizard.PythonPagePresenter;
 import com.codenvy.ide.ext.python.shared.ProjectAttributes;
-import com.codenvy.ide.extension.runner.client.wizard.SelectRunnerPagePresenter;
+import com.codenvy.ide.ext.runner.client.wizard.SelectRunnerPagePresenter;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -36,7 +36,8 @@ public class PythonExtension {
     }
 
     @Inject
-    public PythonExtension(Provider<PythonPagePresenter> pythonPagePresenterProvider, Provider<SelectRunnerPagePresenter> runnerPagePresenter,
+    public PythonExtension(Provider<PythonPagePresenter> pythonPagePresenterProvider,
+                           Provider<SelectRunnerPagePresenter> runnerPagePresenter,
                            NotificationManager notificationManager, ProjectTypeWizardRegistry projectTypeWizardRegistry,
                            ParserResource parserResource, IconRegistry iconRegistry) {
         ProjectWizard wizard = new ProjectWizard(notificationManager);
@@ -45,6 +46,7 @@ public class PythonExtension {
 
         projectTypeWizardRegistry.addWizard(ProjectAttributes.PYTHON_ID, wizard);
 
-        iconRegistry.registerIcon(new Icon(ProjectAttributes.PYTHON_CATEGORY + ".samples.category.icon", parserResource.pythonCategoryIcon()));
+        iconRegistry
+                .registerIcon(new Icon(ProjectAttributes.PYTHON_CATEGORY + ".samples.category.icon", parserResource.pythonCategoryIcon()));
     }
 }
