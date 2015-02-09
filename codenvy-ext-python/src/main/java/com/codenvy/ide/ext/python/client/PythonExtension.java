@@ -17,7 +17,6 @@ import com.codenvy.ide.api.notification.NotificationManager;
 import com.codenvy.ide.api.projecttype.wizard.ProjectTypeWizardRegistry;
 import com.codenvy.ide.api.projecttype.wizard.ProjectWizard;
 import com.codenvy.ide.ext.python.client.wizard.PythonPagePresenter;
-import com.codenvy.ide.ext.python.shared.ProjectAttributes;
 import com.codenvy.ide.ext.runner.client.wizard.SelectRunnerPagePresenter;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
@@ -25,6 +24,9 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 import org.vectomatic.dom.svg.ui.SVGResource;
+
+import static com.codenvy.ide.ext.python.shared.ProjectAttributes.PYTHON_CATEGORY;
+import static com.codenvy.ide.ext.python.shared.ProjectAttributes.PYTHON_ID;
 
 /** @author Vladyslav Zhukovskii */
 @Singleton
@@ -38,15 +40,16 @@ public class PythonExtension {
     @Inject
     public PythonExtension(Provider<PythonPagePresenter> pythonPagePresenterProvider,
                            Provider<SelectRunnerPagePresenter> runnerPagePresenter,
-                           NotificationManager notificationManager, ProjectTypeWizardRegistry projectTypeWizardRegistry,
-                           ParserResource parserResource, IconRegistry iconRegistry) {
+                           NotificationManager notificationManager,
+                           ProjectTypeWizardRegistry projectTypeWizardRegistry,
+                           ParserResource parserResource,
+                           IconRegistry iconRegistry) {
         ProjectWizard wizard = new ProjectWizard(notificationManager);
         wizard.addPage(pythonPagePresenterProvider);
         wizard.addPage(runnerPagePresenter);
 
-        projectTypeWizardRegistry.addWizard(ProjectAttributes.PYTHON_ID, wizard);
+        projectTypeWizardRegistry.addWizard(PYTHON_ID, wizard);
 
-        iconRegistry
-                .registerIcon(new Icon(ProjectAttributes.PYTHON_CATEGORY + ".samples.category.icon", parserResource.pythonCategoryIcon()));
+        iconRegistry.registerIcon(new Icon(PYTHON_CATEGORY + ".samples.category.icon", parserResource.pythonCategoryIcon()));
     }
 }
