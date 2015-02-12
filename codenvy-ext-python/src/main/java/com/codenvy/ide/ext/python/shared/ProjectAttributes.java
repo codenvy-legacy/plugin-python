@@ -15,4 +15,5 @@ public interface ProjectAttributes {
     String PYTHON_ID             = "python";
     String PYTHON_NAME           = "Python Project";
     String PYTHON_CATEGORY       = "Python";
+    String PROGRAMMING_LANGUAGE  = "python";
 }

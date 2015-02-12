@@ -11,10 +11,10 @@
 package com.codenvy.ide.ext.python.client.inject;
 
 import com.codenvy.ide.api.extension.ExtensionGinModule;
-import com.codenvy.ide.ext.python.client.wizard.PythonPageView;
-import com.codenvy.ide.ext.python.client.wizard.PythonPageViewImpl;
+import com.codenvy.ide.api.projecttype.wizard.ProjectWizardRegistrar;
+import com.codenvy.ide.ext.python.client.wizard.PythonProjectWizardRegistrar;
 import com.google.gwt.inject.client.AbstractGinModule;
-import com.google.inject.Singleton;
+import com.google.gwt.inject.client.multibindings.GinMultibinder;
 
 /** @author Vladyslav Zhukovskii */
 @ExtensionGinModule
@@ -22,6 +22,6 @@ public class PythonGinModule extends AbstractGinModule {
     /** {@inheritDoc} */
     @Override
     protected void configure() {
-        bind(PythonPageView.class).to(PythonPageViewImpl.class).in(Singleton.class);
+        GinMultibinder.newSetBinder(binder(), ProjectWizardRegistrar.class).addBinding().to(PythonProjectWizardRegistrar.class);
     }
 }

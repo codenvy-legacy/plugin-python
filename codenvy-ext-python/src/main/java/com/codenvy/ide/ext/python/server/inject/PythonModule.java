@@ -10,10 +10,11 @@
  *******************************************************************************/
 package com.codenvy.ide.ext.python.server.inject;
 
-import com.codenvy.ide.ext.python.server.project.type.PythonProjectTypeDescriptionExtension;
-import com.codenvy.ide.ext.python.server.project.type.PythonProjectTypeExtension;
+import com.codenvy.api.project.server.type.ProjectType;
+import com.codenvy.ide.ext.python.server.project.type.PythonProjectType;
 import com.codenvy.inject.DynaModule;
 import com.google.inject.AbstractModule;
+import com.google.inject.multibindings.Multibinder;
 
 /** @author Vladyslav Zhukovskii */
 @DynaModule
@@ -21,7 +22,7 @@ public class PythonModule extends AbstractModule {
     /** {@inheritDoc} */
     @Override
     protected void configure() {
-        bind(PythonProjectTypeExtension.class);
-        bind(PythonProjectTypeDescriptionExtension.class);
+        Multibinder<ProjectType> projectTypeMultibinder = Multibinder.newSetBinder(binder(), ProjectType.class);
+        projectTypeMultibinder.addBinding().to(PythonProjectType.class);
     }
 }
