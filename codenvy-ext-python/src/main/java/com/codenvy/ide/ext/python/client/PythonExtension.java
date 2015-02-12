@@ -13,7 +13,6 @@ package com.codenvy.ide.ext.python.client;
 import com.codenvy.ide.api.extension.Extension;
 import com.codenvy.ide.api.icon.Icon;
 import com.codenvy.ide.api.icon.IconRegistry;
-import com.codenvy.ide.ext.python.shared.ProjectAttributes;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
