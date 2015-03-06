@@ -13,12 +13,13 @@ package com.codenvy.ide.ext.python.client;
 import com.codenvy.ide.api.extension.Extension;
 import com.codenvy.ide.api.icon.Icon;
 import com.codenvy.ide.api.icon.IconRegistry;
-import com.codenvy.ide.ext.python.shared.ProjectAttributes;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import org.vectomatic.dom.svg.ui.SVGResource;
+
+import static com.codenvy.ide.ext.python.shared.ProjectAttributes.PYTHON_CATEGORY;
 
 /** @author Vladyslav Zhukovskii */
 @Singleton
@@ -26,8 +27,7 @@ import org.vectomatic.dom.svg.ui.SVGResource;
 public class PythonExtension {
     @Inject
     public PythonExtension(ParserResource parserResource, IconRegistry iconRegistry) {
-        iconRegistry.registerIcon(new Icon(ProjectAttributes.PYTHON_CATEGORY + ".samples.category.icon",
-                                           parserResource.pythonCategoryIcon()));
+        iconRegistry.registerIcon(new Icon(PYTHON_CATEGORY + ".samples.category.icon", parserResource.pythonCategoryIcon()));
     }
 
     public interface ParserResource extends ClientBundle {
