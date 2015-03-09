@@ -8,21 +8,20 @@
  * Contributors:
  *   Codenvy, S.A. - initial API and implementation
  *******************************************************************************/
-package com.codenvy.ide.ext.python.server.inject;
+package org.eclipse.che.ide.ext.python.client.inject;
 
-import com.codenvy.api.project.server.type.ProjectType;
-import com.codenvy.ide.ext.python.server.project.type.PythonProjectType;
-import com.codenvy.inject.DynaModule;
-import com.google.inject.AbstractModule;
-import com.google.inject.multibindings.Multibinder;
+import org.eclipse.che.ide.api.extension.ExtensionGinModule;
+import org.eclipse.che.ide.api.project.type.wizard.ProjectWizardRegistrar;
+import org.eclipse.che.ide.ext.python.client.wizard.PythonProjectWizardRegistrar;
+import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.gwt.inject.client.multibindings.GinMultibinder;
 
 /** @author Vladyslav Zhukovskii */
-@DynaModule
-public class PythonModule extends AbstractModule {
+@ExtensionGinModule
+public class PythonGinModule extends AbstractGinModule {
     /** {@inheritDoc} */
     @Override
     protected void configure() {
-        Multibinder<ProjectType> projectTypeMultibinder = Multibinder.newSetBinder(binder(), ProjectType.class);
-        projectTypeMultibinder.addBinding().to(PythonProjectType.class);
+        GinMultibinder.newSetBinder(binder(), ProjectWizardRegistrar.class).addBinding().to(PythonProjectWizardRegistrar.class);
     }
 }
